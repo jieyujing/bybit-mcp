@@ -26,10 +26,14 @@ The HTTP server binds to `0.0.0.0:3000` by default:
 
 Horizon can inject its assigned `PORT`. Optional variables:
 
-- `HOST` — bind host, default `0.0.0.0`
-- `PORT` — listen port, default `3000`
+- `HOST` or `MCP_HOST` — bind host, default `0.0.0.0`
+- `PORT` or `MCP_PORT` — listen port, default `3000`
 - `MCP_PATH` — MCP endpoint path, default `/mcp`
 - `MCP_ALLOWED_HOSTS` — comma-separated Host-header allowlist
+
+Horizon's TypeScript builder requires `@prefecthq/fastmcp-ts` to be declared
+in `package.json`. The runtime remains the official MCP SDK implementation in
+this fork; FastMCP TS supplies Horizon's launcher/build integration.
 
 For a Horizon deployment, use the normal Node build command (`npm ci && npm run build`)
 and start command (`npm start`). Point MCP clients at the deployed `/mcp` URL.

@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.10.2",
+    "@prefecthq/fastmcp-ts": "^1.7.2",
     "ws": "^8.18.0",
     "zod": "^3.24.2",
     "zod-to-json-schema": "^3.24.5"

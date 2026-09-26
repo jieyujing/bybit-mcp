@@ -103,8 +103,8 @@ function jsonRpcMethodNotAllowed() {
 }
 
 export async function startHttpServer(): Promise<void> {
-  const host = process.env.HOST || '0.0.0.0';
-  const port = parsePort(process.env.PORT);
+  const host = process.env.HOST || process.env.MCP_HOST || '0.0.0.0';
+  const port = parsePort(process.env.PORT || process.env.MCP_PORT);
   const mcpPath = process.env.MCP_PATH || '/mcp';
   const allowedHosts = process.env.MCP_ALLOWED_HOSTS
     ?.split(',')
