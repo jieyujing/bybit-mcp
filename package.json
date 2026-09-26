@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "Bybit trading MCP server — exposes Bybit REST and WebSocket APIs as MCP tools",
+  "description": "Read-only Bybit public market-data MCP server with stdio and Streamable HTTP transports",
   "type": "module",
   "main": "dist/index.js",
   "license": "MIT",
@@ -19,7 +19,8 @@
   ],
   "bin": {
     "trading-mcp": "dist/index.js",
-    "bybit-official-trading-server": "dist/index.js"
+    "bybit-official-trading-server": "dist/index.js",
+    "bybit-market-mcp": "dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,11 @@
     "build": "tsup",
     "dev": "node --env-file=.env --import tsx/esm src/index.ts",
     "typecheck": "tsc --noEmit",
-    "publish-pkg": "bash scripts/publish.sh"
+    "publish-pkg": "bash scripts/publish.sh",
+    "dev:http": "node --env-file=.env --import tsx/esm src/index.ts --transport http",
+    "start": "node dist/index.js --transport http",
+    "start:http": "node dist/index.js --transport http",
+    "start:stdio": "node dist/index.js --transport stdio"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.10.2",
@@ -41,15 +46,17 @@
     "zod-to-json-schema": "^3.24.5"
   },
   "devDependencies": {
-    "js-yaml": "^4.1.0",
+    "@types/express": "^5.0.6",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.0.0",
     "@types/ws": "^8.5.13",
+    "js-yaml": "^4.1.0",
     "tsup": "^8.4.0",
     "tsx": "^4.19.3",
     "typescript": "^5.7.3"
   },
   "engines": {
     "node": ">=20.6"
-  }
+  },
+  "private": true
 }
